@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef SRC_ECGHEADERCOMMON_H_
-#define SRC_ECGHEADERCOMMON_H_
+#ifndef SRC_ECGHEADERCOMMON_H
+#define SRC_ECGHEADERCOMMON_H
 
 #include <stdint.h>
 
@@ -37,4 +37,4 @@ static const int ECG_MAX_SEND_SIZE = 2160;
 static const int ECG_COMPRESS_OUTPUT_BUFFER_SIZE = 25*ECG_MAX_SEND_SIZE/24+1;
 
 
-#endif /* SRC_ECGHEADERCOMMON_H_ */
+#endif

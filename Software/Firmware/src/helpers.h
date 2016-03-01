@@ -18,11 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef SRC_HELPERS_H_
-#define SRC_HELPERS_H_
+#ifndef SRC_HELPERS_H
+#define SRC_HELPERS_H
 
 #define UNUSED(x) ((void)(x))
 
-
-
-#endif /* SRC_HELPERS_H_ */
+#endif

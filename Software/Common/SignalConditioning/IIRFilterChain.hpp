@@ -1,5 +1,5 @@
-#ifndef _IIR_FILTER_CHAIN_H
-#define _IIR_FILTER_CHAIN_H
+#ifndef IIR_FILTER_CHAIN_H
+#define IIR_FILTER_CHAIN_H
 
 #include <vector>
 #include "IFilter.hpp"

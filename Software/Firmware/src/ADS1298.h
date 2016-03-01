@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef SRC_ADS1298_H_
-#define SRC_ADS1298_H_
+#ifndef SRC_ADS1298_H
+#define SRC_ADS1298_H
 
 #include <GPIO.h>
 #include <CircularBuffer.h>
@@ -87,4 +87,4 @@ class ADS1298 {
 
 };
 
-#endif /* SRC_ADS1298_H_ */
+#endif

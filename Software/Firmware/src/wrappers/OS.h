@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef SRC_WRAPPERS_OS_H_
-#define SRC_WRAPPERS_OS_H_
+#ifndef SRC_WRAPPERS_OS_H
+#define SRC_WRAPPERS_OS_H
 
 #include <cstdint>
 #include <helpers.h>
@@ -89,4 +89,4 @@ namespace OS{
 	};
 }
 
-#endif /* SRC_WRAPPERS_OS_H_ */
+#endif

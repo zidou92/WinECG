@@ -1,5 +1,5 @@
-#ifndef _ECG_FILTERS_H
-#define _ECG_FILTERS_H
+#ifndef ECG_FILTERS_H
+#define ECG_FILTERS_H
 
 #include "SecondOrderIIR.hpp"
 #include "IIRFilterChain.hpp"

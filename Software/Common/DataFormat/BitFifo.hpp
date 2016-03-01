@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _FIFO_BUFFER_HPP
-#define _FIFO_BUFFER_HPP
+#ifndef FIFO_BUFFER_HPP
+#define FIFO_BUFFER_HPP
 
 #include <stdint.h>
 

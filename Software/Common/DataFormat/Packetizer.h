@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef SRC_PACKETIZER_H_
-#define SRC_PACKETIZER_H_
+#ifndef SRC_PACKETIZER_H
+#define SRC_PACKETIZER_H
 
 #include <stdint.h>
 
@@ -56,4 +56,4 @@ private:
 	void resetChecksum();
 };
 
-#endif /* SRC_PACKETIZER_H_ */
+#endif

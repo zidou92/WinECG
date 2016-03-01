@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef SRC_ECGSENDER_H_
-#define SRC_ECGSENDER_H_
+#ifndef SRC_ECGSENDER_H
+#define SRC_ECGSENDER_H
 
 #include <stdint.h>
 
@@ -55,4 +55,4 @@ private:
 	TestSignalGenerator testGenerator;
 };
 
-#endif /* SRC_ECGSENDER_H_ */
+#endif

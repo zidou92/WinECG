@@ -23,8 +23,8 @@
  *
  */
 
-#ifndef SRC_BLUETOOTH_H_
-#define SRC_BLUETOOTH_H_
+#ifndef SRC_BLUETOOTH_H
+#define SRC_BLUETOOTH_H
 
 extern "C" {
 	#include <HCITRANS.h>
@@ -135,4 +135,4 @@ class Bluetooth {
 		int send(const char *data, int size=0, time_t timeout=TIME_INF, bool startSend=true);
 };
 
-#endif /* SRC_BLUETOOTH_H_ */
+#endif

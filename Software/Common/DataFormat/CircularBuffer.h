@@ -232,4 +232,4 @@ template <typename Type, int vectorSizeMax, bool useMemcpy=false> class Circular
         }
 };
 
-#endif // CIRCULARBUFFER_H
+#endif

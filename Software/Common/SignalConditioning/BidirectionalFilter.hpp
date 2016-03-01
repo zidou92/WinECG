@@ -1,5 +1,5 @@
-#ifndef _TWO_WAY_FILTER_H
-#define _TWO_WAY_FILTER_H
+#ifndef TWO_WAY_FILTER_H
+#define TWO_WAY_FILTER_H
 
 #include "IFilter.hpp"
 #include "../DataFormat/CircularBuffer.h"

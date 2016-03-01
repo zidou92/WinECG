@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef SRC_WRAPPERS_EEPROM_H_
-#define SRC_WRAPPERS_EEPROM_H_
+#ifndef SRC_WRAPPERS_EEPROM_H
+#define SRC_WRAPPERS_EEPROM_H
 
 #include <cstdint>
 

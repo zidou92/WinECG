@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _HELPERS_HPP
-#define _HELPERS_HPP
+#ifndef HELPERS_HPP
+#define HELPERS_HPP
 
 #include <stdint.h>
 

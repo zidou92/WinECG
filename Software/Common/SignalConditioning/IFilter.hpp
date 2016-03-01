@@ -1,5 +1,5 @@
-#ifndef _I_FILTER_H
-#define _I_FILTER_H
+#ifndef I_FILTER_H
+#define I_FILTER_H
 
 #include "FilterConfig.hpp"
 

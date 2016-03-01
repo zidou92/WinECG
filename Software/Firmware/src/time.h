@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef SRC_TIME_H_
-#define SRC_TIME_H_
+#ifndef SRC_TIME_H
+#define SRC_TIME_H
 
 #include <stdint.h>
 #include <sys/types.h>
@@ -27,4 +27,4 @@
 const time_t TIME_INF = (time_t)(-1);
 
 
-#endif /* SRC_TIME_H_ */
+#endif

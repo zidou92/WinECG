@@ -1,5 +1,5 @@
-#ifndef _IIR_FILTER_HPP_
-#define _IIR_FILTER_HPP_
+#ifndef IIR_FILTER_HPP_
+#define IIR_FILTER_HPP_
 
 #include <stdint.h>
 #include "IFilter.hpp"

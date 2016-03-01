@@ -19,8 +19,8 @@
  */
  
  
-#ifndef SRC_WRAPPERS_GPIO_H_
-#define SRC_WRAPPERS_GPIO_H_
+#ifndef SRC_WRAPPERS_GPIO_H
+#define SRC_WRAPPERS_GPIO_H
 
 extern "C"{
 	#include "stm32f4xx_hal.h"
@@ -40,4 +40,4 @@ class GPIO{
 
 
 
-#endif /* SRC_WRAPPERS_GPIO_H_ */
+#endif

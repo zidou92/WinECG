@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _TEST_SIGNAL_GENERATOR_HPP
-#define _TEST_SIGNAL_GENERATOR_HPP
+#ifndef TEST_SIGNAL_GENERATOR_HPP
+#define TEST_SIGNAL_GENERATOR_HPP
 
 #include <math.h>
 

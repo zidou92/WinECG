@@ -18,8 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-#ifndef _PACKET_READER_HPP
-#define _PACKET_READER_HPP
+#ifndef PACKET_READER_HPP
+#define PACKET_READER_HPP
 
 #include "Packetizer.h"
 #include <string>
