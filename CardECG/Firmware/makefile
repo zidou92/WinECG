@@ -16,7 +16,7 @@
 	TOOL	= arm-none-eabi-
 #	TOOL	= arm-kgp-eabi-
 
-	PORT    = /dev/tty.usbserial
+	PORT    = /dev/tty.usbserial-DUT3
 
 # compile options 
 	MCU			= arm7tdmi
