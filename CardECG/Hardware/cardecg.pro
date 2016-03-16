@@ -1,4 +1,4 @@
-update=2015. November 07., Szombat 21:42:10
+update=2016. Március 16., Szerda 18:07:57
 version=1
 last_client=kicad
 [cvpcb]
@@ -68,3 +68,4 @@ LibName34=tps717
 LibName35=npmos_gsd
 LibName36=3tap
 LibName37=esd_protector
+LibName38=ld8605
