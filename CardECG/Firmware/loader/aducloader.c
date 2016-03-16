@@ -20,6 +20,8 @@
  * This is an in-circuit serial download program for the Analog Devices
  * ADuC702x range of microcontrollers.  The relevant protocol details
  * are described in application note AN-724.
+ *
+ * Connect reset pin to RTS and PROG pin to DTR.
  */
 
 #include <sys/types.h>
@@ -35,6 +37,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <getopt.h>
+#include <stdbool.h>
+#include <sys/ioctl.h>
 
 struct record {
 	struct record *next;
@@ -55,6 +59,9 @@ int serial_close(int fd);
 int serial_read_fully(int fd, uint8_t *buffer, int count, int timeout);
 int serial_write_fully(int fd, const uint8_t *buffer, int count, int timeout);
 int serial_read(int fd, uint8_t *buffer, int count, int timeout);
+
+void set_dtr(int fd, bool enabled);
+void set_rts(int fd, bool enabled);
 
 int baudrate_to_speed_t(const char *baudrate, speed_t *speed);
 
@@ -183,16 +190,30 @@ int do_serial_comms(const char *ttyfile, const char *baudrate, struct record *ro
 		return -1;
 	}
 
+	fprintf(stdout, "Putting card into download mode.\n");
+	//Set PROG and reset
+	set_dtr(fd, true);
+	set_rts(fd, true);
+
+	sleep(1);
+	
+
 	fprintf(stdout, "Trying to synchronize with ADuC70xx: ");
 	fflush(stdout);
 	
 	while (serial_read_fully(fd, ptr, 1, 100));
 	
+	set_rts(fd, false);
+	
+
 	do {
 		len = serial_write_fully(fd, BACKSPACE, sizeof(BACKSPACE), 1000);
 		len = serial_read_fully(fd, ptr, 24, 100);
 		
 	} while (!((len > 6) && (memcmp(ptr, "ADuC70", 6) == 0)));
+
+	//Disable PROG
+	set_dtr(fd, false);
 	
 	while (serial_read_fully(fd, ptr, 1, 100));
 
@@ -351,6 +372,16 @@ int serial_close(int fd)
 	}
 	return 0;
 }
+
+void set_dtr(int fd, bool enabled){
+	int flag = TIOCM_DTR;
+	ioctl(fd,enabled ? TIOCMBIS : TIOCMBIC, &flag);
+}
+void set_rts(int fd, bool enabled){
+	int flag = TIOCM_RTS;
+	ioctl(fd,enabled ? TIOCMBIS : TIOCMBIC, &flag);
+}
+
 
 int serial_read_fully(int fd, uint8_t *buffer, int count, int timeout)
 {
