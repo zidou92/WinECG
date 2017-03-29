@@ -24,6 +24,8 @@
 #include <stdarg.h>
 
 int vsnprintf(char *dest, int maxlen, const char *format, va_list vl);
-void printf(const char *format, ...);
+extern "C"{
+    int printf(const char *format, ...);
+}
 
 #endif

@@ -20,4 +20,4 @@
  
 #include "Time.hpp"
 
-time_t currTime;
+volatile Time::time_t Time::currTime;

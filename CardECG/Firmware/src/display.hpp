@@ -26,7 +26,7 @@
 #include "displayRegs.h"
 #include "spi.h"
 
-template <int portReset, int pinReset, int portCS, int pinCS> class TDisplay{
+template <int portReset, int pinReset, int portCS, int pinCS, int portDC, int pinDC> class TDisplay{
 	public:
 		TDisplay(){
 			ioInit();
@@ -41,21 +41,25 @@ template <int portReset, int pinReset, int portCS, int pinCS> class TDisplay{
 			
 		Pin<portReset, pinReset> reset;
 		Pin<portCS, pinCS> cs;
+		Pin<portDC, pinDC> dc;
 		
 		void ioInit(){
 			reset.direct(OUTPUT);
 			cs.direct(OUTPUT);
+			dc.direct(OUTPUT);
 			
 			reset.on();
 			cs.on();
+			dc.on();
 		}
 
 		void command(uint8_t byte){
+			dc.off();
 			cs.off();
-			spi.send(byte>>1);
-			spi.send(byte<<7);
+			spi.send(byte);
 			spi.waitTx();
 			cs.on();
+			dc.on();
 		}
 	
 		
@@ -63,17 +67,8 @@ template <int portReset, int pinReset, int portCS, int pinCS> class TDisplay{
 			cs.off();
 			const int size=WIDTH*HEIGHT>>3;
 			
-				
-			for (int i = 0; i < size; i+=8){
-				spi.send((data[i]>>1) | 0x80);
-				spi.send((data[i]<<7) | 0x40 | (data[i+1]>>2));
-				spi.send((data[i+1]<<6) | 0x20 | (data[i+2]>>3));
-				spi.send((data[i+2]<<5) | 0x10 | (data[i+3]>>4));
-				spi.send((data[i+3]<<4) | 0x08 | (data[i+4]>>5));
-				spi.send((data[i+4]<<3) | 0x04 | (data[i+5]>>6));
-				spi.send((data[i+5]<<2) | 0x02 | (data[i+6]>>7));
-				spi.send((data[i+6]<<1) | 0x01);
-				spi.send(data[i+7]);
+			for (int i = 0; i < size; i++){
+				spi.send(data[i]);
 			}
 			spi.waitTx();
 			
@@ -122,7 +117,6 @@ template <int portReset, int pinReset, int portCS, int pinCS> class TDisplay{
 			else
 				command(SSD1306_NORMALDISPLAY);
 		}
-		
 		
 		
 		void sendFramebuffer(const uint8_t *data){

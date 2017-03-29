@@ -27,7 +27,6 @@
 
 class UART{
 	private:
-		Pin <1,0> rx;
 		Pin <1,1> tx;
 		
 		void setBaud(uint32_t baudrate);

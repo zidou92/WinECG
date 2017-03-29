@@ -61,7 +61,7 @@ void TextRenderer::render(uint32_t x, uint32_t y, const char *str){
 }
 
 void TextRenderer::printf(uint32_t x, uint32_t y, const char *format, ...){
-	char buffer[64];
+	char buffer[32];
 	
 	va_list vl;
 	va_start(vl, format);

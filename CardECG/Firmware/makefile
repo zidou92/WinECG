@@ -16,7 +16,7 @@
 	TOOL	= arm-none-eabi-
 #	TOOL	= arm-kgp-eabi-
 
-	PORT    = /dev/tty.usbserial-DUT3
+	PORT    = /dev/ttyUSB1
 
 # compile options 
 	MCU			= arm7tdmi
@@ -125,6 +125,7 @@
 	LD_FLAGS	+= -fno-exceptions -fno-rtti	
 	LD_FLAGS	+= -Wl,--gc-sections
 	LD_FLAGS	+= -T$(LD_SCRIPT)
+	LD_FLAGS    += -specs=nosys.specs
 	
 
 

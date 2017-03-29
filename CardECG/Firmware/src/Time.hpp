@@ -23,19 +23,31 @@
 
 #include <stdint.h>
 
-#define MS_PER_TICK 10
+namespace Time{
+    typedef uint32_t time_t;
+    const time_t MS_PER_TICK=10;
+    extern volatile time_t currTime;
 
-typedef uint32_t time_t;
+    inline time_t now(){
+        return currTime;
+    }
 
-#define now() (currTime)
-#define startTimer() (now())
+    inline time_t startTimer(){
+        return now();
+    }
 
-#define msPassed(timer, ms) (currTime > (timer + ((MS_PER_TICK-1+ms)/MS_PER_TICK)))
+    inline bool msPassed(time_t timer, time_t ms){
+        return currTime > (timer + ((MS_PER_TICK-1+ms)/MS_PER_TICK));
+    }
 
-#define msSince(time) ((currTime - (time))*MS_PER_TICK)
+    inline time_t msSince(time_t time){
+        return (currTime - (time))*MS_PER_TICK;
+    }
 
-#define clockInit() currTime=0
-
-extern time_t currTime;
+    
+    inline void clockInit(){
+        currTime=0;
+    }
+}
 
 #endif

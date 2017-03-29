@@ -22,6 +22,7 @@
 #include <cstring>
 
 Framebuffer::Framebuffer(){
+	framebuffer=(uint8_t*)framebufferUint64;
 	clear();
 }
 
@@ -66,9 +67,8 @@ void Framebuffer::drawImage(uint32_t x, uint32_t y, const Image &image){
 }
 
 void Framebuffer::clear(){
-	uint64_t *fb=(uint64_t*)framebuffer;
 	for (int a=0; a<128; a++)
-		fb[a]=0;
+		framebufferUint64[a]=0;
 }
 
 void Framebuffer::vLine(uint32_t x, uint32_t startY, uint32_t stopY){

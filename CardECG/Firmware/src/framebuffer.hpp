@@ -38,7 +38,8 @@ class Framebuffer{
 		void vLine(uint32_t x, uint32_t startY, uint32_t stopY);
 		void clear();
 	private:
-		uint8_t framebuffer[width*height/8];
+		uint8_t *framebuffer;
+		uint64_t framebufferUint64[width*height/8/8];
 		uint32_t sizeLimit(uint32_t val, uint32_t maxval, uint32_t range);
 };
 

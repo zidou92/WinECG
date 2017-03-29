@@ -169,7 +169,7 @@ int vsnprintf(char *dest, int maxlen, const char *format, va_list vl){
 }
 
 
-void printf(const char *format, ...){
+int printf(const char *format, ...){
 	char buffer[64];
 	
 	va_list vl;
@@ -178,4 +178,5 @@ void printf(const char *format, ...){
 	va_end(vl);
 	
 	Globals::instance().uart.send(buffer);
+	return 0;
 }

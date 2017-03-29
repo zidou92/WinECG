@@ -38,9 +38,9 @@
 #include "SignalQuality.hpp"
 
 Pin <0,4> pullup_off;
-Pin <2,0> power_on;
+Pin <1,0> power_on;
 
-typedef OS::process<OS::pr0, 400> TProc1;
+typedef OS::process<OS::pr0, 600> TProc1;
 TProc1 Proc1;
 
 volatile int pina;
@@ -58,7 +58,7 @@ int main()
 
 bool flow=true;
 
-TDisplay<0,2,0,0> display;
+TDisplay<0,2,0,0,2,0> display;
 Framebuffer fb;
 TextRenderer tr(fb);
 ADC ad;
@@ -155,34 +155,17 @@ namespace OS
 		
 		ad.setRate(50);
 		ad.setGain(4);
-		ad.start();		
-
-		int32_t oldval=0;
-		
-		uint32_t fpsTmp=0;
-		uint32_t fps=0;
-		time_t timer=startTimer();
-		time_t resetTimer=0;
+		ad.start();
 		
 		int32_t logoCounter = 80;
-		
-		int32_t reset=0;
 		int turnOffCounter = 2;
 		
         for(;;)
         {
 			int32_t newval=ad.get();
-			bool qrs=detector.process(newval);
+			detector.process(newval);
 			newval /= -300;
-			
-			
-			if (abs(oldval-newval)>64*2){
-				resetTimer=startTimer();
-			}
-			
-			
-			oldval = newval;
-			
+						
 			ecgData[buffPos] = saturate8(filter.filter(newval));
 
 			signalQuality.processSample(newval, ecgData[buffPos]);
@@ -193,15 +176,6 @@ namespace OS
 			}
 			
 			
-			fpsTmp++;
-			if (msPassed(timer,1000)){
-				timer=startTimer();
-				//-1: when this code runs, plus 1 frame must be rendered.
-				//Do not count the current frame.
-				fps=fpsTmp-1;
-				fpsTmp=0;
-			}
-			
 			if(logoCounter > 0)
 				logoCounter--;
 			
@@ -210,7 +184,7 @@ namespace OS
 				fb.clear();	
 				
 				int pr = detector.getPulseRate();
-				if(pr > 0)
+			//	if(pr > 0)
 					tr.printf(127 | TextRenderer::ALIGN_RIGHT,0,"%d", pr);
 				
 				int32_t prevdata=getEcgdata(ECGBUF_LEN-1);
@@ -290,7 +264,7 @@ extern "C" void IRQ_Switch()
     if(irq & SYSTEM_TIMER_INT)
     {
 		   OS::system_timer_isr();
-		   currTime++;
+		   Time::currTime++;
     }
 	
 	HANDLE_ADCINT(irq);

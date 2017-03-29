@@ -37,14 +37,11 @@ UART::UART(){
 
 UART::~UART(){
 	tx.alternate(OFF);
-	rx.alternate(OFF);
 }
 
 void UART::init(uint32_t baudrate){
 	tx.alternate(ON);
-	rx.alternate(ON);
-
-	
+		
 	setBaud(baudrate);
 	COMCON0 = COMCON0_DATABITS_8;
 	COMCON1 = 0;
